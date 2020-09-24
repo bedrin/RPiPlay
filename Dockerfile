@@ -31,8 +31,6 @@ COPY ./avahi-daemon.conf /etc/avahi/avahi-daemon.conf
 USER root
 RUN mkdir -p /var/run/dbus
 
-ADD ./run.sh /tmp/rpiplay/RPiPlay-master/build/run.sh
-
 # Run container
 EXPOSE 5353 51826
 ENTRYPOINT ["/tmp/rpiplay/RPiPlay-master/build/rpiplay"]
