@@ -35,4 +35,4 @@ ADD ./run.sh /tmp/rpiplay/RPiPlay-master/build/run.sh
 
 # Run container
 EXPOSE 5353 51826
-CMD ["/tmp/rpiplay/RPiPlay-master/build/rpiplay"]
+ENTRYPOINT ["/tmp/rpiplay/RPiPlay-master/build/rpiplay"]
