@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <assert.h>
+#include <time.h>
 
 #include "logger.h"
 #include "compat.h"
@@ -128,11 +129,13 @@ logger_log(logger_t *logger, int level, const char *fmt, ...)
 		char *local;
 		MUTEX_UNLOCK(logger->cb_mutex);
 		local = logger_utf8_to_local(buffer);
+        time_t ltime;
+        ltime=time(NULL);
 		if (local) {
-			fprintf(stderr, "%s\n", local);
+			fprintf(stderr, "%s - %s\n", asctime( localtime(&ltime) ), local);
 			free(local);
 		} else {
-			fprintf(stderr, "%s\n", buffer);
+			fprintf(stderr, "%s - %s\n", asctime( localtime(&ltime) ), buffer);
 		}
 	}
 }
